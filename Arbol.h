@@ -34,11 +34,20 @@ private:
         }
         return  aux;
     };
-
+    Nodo* encontrarMenor(Nodo* raiz){
+        Nodo* aux = raiz;
+        while( aux->izq != nullptr)
+        {
+            aux = aux->izq;
+        }
+        return  aux;
+    }
     void preOrden(Nodo* raiz);
-    void enOrden(Nodo* raiz);
+    void enOrden(Nodo* raiz,int nivel =0);
     void postOrden(Nodo* raiz);
     void eliminarTodo(Nodo* raiz);
+    int numeroNodos(Nodo* raiz);
+    int altura(Nodo* raiz);
 public:
     Arbol();
     void agregar(int dato);
@@ -47,7 +56,8 @@ public:
     void preOrden();
     void enOrden();
     void postOrden();
-
+    int numeroNodos();
+    int altura();
 };
 
 

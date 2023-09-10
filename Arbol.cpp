@@ -48,13 +48,21 @@ Nodo* Arbol::eliminar(Nodo* raiz,int dato){
 
         // Si el nodo tiene dos hojas
         }else if(raiz->izq != nullptr && raiz->der != nullptr){
+
+            // Nodo actual que vamos a eliminar
             Nodo* actual = raiz;
-            Nodo* menor = encontrarMaximo(actual->izq);
+            // Encuentra el valor máximo en el subarbol izquierdo
+            Nodo* maximo = encontrarMaximo(actual->izq);
 
-            actual->dato = menor->dato;
+
+            // Remplazamos el valor del nodo actual con el valor maximo del nodo
+            // del subarbol izquierdo
+            actual->dato = maximo->dato;
 
 
-            actual->izq = eliminar(actual->izq, menor->dato);
+            // Elimina el nodo con el valor máximo del subárbol izquierdo
+
+            actual->izq = eliminar(actual->izq, maximo->dato);
 
 
         }else if(raiz->der != nullptr){
@@ -93,15 +101,18 @@ void Arbol::preOrden(Nodo *raiz) {
     enOrden(raiz->izq);
     enOrden(raiz->der);
 }
-void Arbol::enOrden(Nodo *raiz) {
+void Arbol::enOrden(Nodo *raiz,int nivel) {
     if(raiz == nullptr){
         return;
     }
+    nivel++;
 
-
-    enOrden(raiz->izq);
+    enOrden(raiz->izq,nivel);
+    for (int i = 0; i < nivel; ++i) {
+        cout<<"  ";
+    }
     cout<<raiz->dato<<endl;
-    enOrden(raiz->der);
+    enOrden(raiz->der,nivel);
 
 
 }
@@ -139,4 +150,38 @@ void Arbol::eliminarTodo(Nodo *raiz) {
 void Arbol::eliminarTodo() {
     eliminarTodo(raiz);
     raiz = nullptr;
+}
+
+// Calcular numero de nodos
+int Arbol::numeroNodos() {
+    return numeroNodos(raiz);
+}
+int Arbol::numeroNodos(Nodo *raiz) {
+    if(raiz == nullptr){
+        return 0;
+    }
+    int cont = 1;
+    cont += numeroNodos(raiz->der);
+    cont += numeroNodos(raiz->izq);
+
+    return  cont;
+
+}
+
+// Calcular la altura de un arbol
+int Arbol::altura(Nodo* raiz) {
+    if (raiz == nullptr) {
+        return 0;
+    } else {
+
+        int alturaIzquierda = altura(raiz->izq);
+        int alturaDerecha = altura(raiz->der);
+
+
+        return max(alturaIzquierda, alturaDerecha) + 1;
+    }
+}
+
+int Arbol::altura() {
+    return altura(raiz);
 }
