@@ -30,5 +30,8 @@ int main() {
     arbol1.enOrden();
     cout<<"El numero de nodos es "<<arbol1.numeroNodos()<<endl;
     cout<<"La altura es  "<<arbol1.altura()<<endl;
+
+
+    cout<<arbol1.busqueda(5);
     return 0;
 }

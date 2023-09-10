@@ -185,3 +185,50 @@ int Arbol::altura(Nodo* raiz) {
 int Arbol::altura() {
     return altura(raiz);
 }
+int Arbol::valorMinimo(Nodo *raiz){
+
+    Nodo* actual = raiz;
+
+    while (actual->izq != nullptr){
+        actual = actual->izq;
+    }
+    return actual->dato;
+}
+int Arbol::valorMaximo(Nodo *raiz) {
+    Nodo* actual = raiz;
+
+    if(actual->der == nullptr){
+        return  actual->dato;
+    }else{
+        return valorMaximo(actual->der);
+    }
+
+}
+
+// Indica si el arbol esta vacio
+bool Arbol::vacio() {
+    return raiz == nullptr;
+}
+
+// Buscar un elemento en el arbol
+bool Arbol::busqueda(Nodo *raiz, int item) {
+    if(raiz == nullptr){
+        return false;
+    }
+
+    bool  encontrado = false;
+
+    if(raiz->dato == item){
+        encontrado = true;
+    }else if(item < raiz->dato){
+        encontrado = busqueda(raiz->izq,item);
+    }else{
+        encontrado = busqueda(raiz->der,item);
+    }
+
+    return encontrado;
+}
+
+bool Arbol::busqueda(int item) {
+    return busqueda(raiz,item);
+}

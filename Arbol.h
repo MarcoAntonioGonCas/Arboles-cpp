@@ -48,6 +48,9 @@ private:
     void eliminarTodo(Nodo* raiz);
     int numeroNodos(Nodo* raiz);
     int altura(Nodo* raiz);
+    int valorMinimo(Nodo* raiz);
+    int valorMaximo(Nodo* raiz);
+    bool busqueda(Nodo* raiz,int item);
 public:
     Arbol();
     void agregar(int dato);
@@ -58,6 +61,8 @@ public:
     void postOrden();
     int numeroNodos();
     int altura();
+    bool vacio();
+    bool busqueda(int item);
 };
 
 
