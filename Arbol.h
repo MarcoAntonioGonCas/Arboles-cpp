@@ -61,6 +61,8 @@ public:
     void postOrden();
     int numeroNodos();
     int altura();
+    int valorMinimo();
+    int valorMaximo();
     bool vacio();
     bool busqueda(int item);
 };

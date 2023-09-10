@@ -185,6 +185,8 @@ int Arbol::altura(Nodo* raiz) {
 int Arbol::altura() {
     return altura(raiz);
 }
+
+// Valor minimo o maximo de un arbol
 int Arbol::valorMinimo(Nodo *raiz){
 
     Nodo* actual = raiz;
@@ -205,6 +207,12 @@ int Arbol::valorMaximo(Nodo *raiz) {
 
 }
 
+int Arbol::valorMaximo() {
+    return valorMaximo(raiz);
+}
+int Arbol::valorMinimo() {
+    return valorMinimo(raiz);
+}
 // Indica si el arbol esta vacio
 bool Arbol::vacio() {
     return raiz == nullptr;
