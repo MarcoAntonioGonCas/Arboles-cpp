@@ -8,7 +8,7 @@ ___
 * Muestra los elementos en preorden.
 * Muestra los elementos en orden.
 * Muestra los elementos en postorden.
-* Indica cuentos elementos tiene el arbol.
+* Indica cuantos elementos tiene el arbol.
 * Indica la altura.
 * Obtiene el valor maximo del arbol.
 * Obtiene el valor minimo del arbol.
